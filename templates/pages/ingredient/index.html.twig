@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %} {% block title %}SymRecipe - Mes Ingredients!{%
+endblock %} {% block body %}
+<div>
+  <h1>Mes ingredients</h1>
+  <div class="flex flex-col justify-center items-center w-[80vw]">
+    <div class="grid grid-cols-4 gap-3">
+      <p class="font-bold">Numéro</p>
+      <p class="font-bold">Nom</p>
+      <p class="font-bold">Prix</p>
+      <p class="font-bold">Date de création</p>
+      {% for ingredient in ingredients %}
+
+      <p>{{ ingredient.id }}</p>
+      <p>{{ ingredient.name }}</p>
+      <p>{{ ingredient.price }}</p>
+      <p>{{ ingredient.createdAt| date("d/m/Y") }}</p>
+
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="navigation flex justify-center">
+    {{ knp_pagination_render(ingredients) }}
+  </div>
+</div>
+
+{% endblock %}
